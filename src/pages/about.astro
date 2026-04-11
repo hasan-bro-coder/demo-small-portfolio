@@ -1,0 +1,79 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About — Alex Mercer" cls="justify-center items-center flex">
+  <div
+    class="p-8 md:p-12 max-w-lg flex justify-center items-center flex-col w-full h-full"
+  >
+    <div class="mb-8 w-40 h-52 overflow-hidden grayscale">
+      <img
+        src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&q=85&auto=format"
+        alt="Alex Mercer"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <h1 class="font-display text-4xl font-light text-(--text) mb-1">
+      Alex Mercer
+    </h1>
+    <p
+      class="font-mono text-[10px] tracking-[0.2em] uppercase text-(--text-3) mb-6"
+    >
+      Photographer · New York
+    </p>
+
+    <div class="space-y-3 text-sm text-(--text-2) leading-relaxed mb-10">
+      <p>
+        I make photographs. Not to document the world as it is, but to find the
+        world as it could be felt — the way light falls on an empty chair, the
+        weight of a stranger's gaze, the geometry a city makes at 3am.
+      </p>
+      <p>
+        Based between New York and wherever I can get a window seat. The work
+        spans portraiture, landscape, architecture, and the undefined spaces
+        between them.
+      </p>
+    </div>
+
+    <!-- Social -->
+    <div class="flex gap-5 mb-8">
+      {
+        [
+          { label: "Instagram", href: "https://instagram.com" },
+          { label: "Twitter", href: "https://twitter.com" },
+          { label: "LinkedIn", href: "https://linkedin.com" },
+        ].map((s) => (
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-[10px] tracking-widest uppercase text-(--text-3) hover:text-[var(--text)] transition-colors border-b border-[var(--border)] pb-px"
+          >
+            {s.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- CV -->
+    <a
+      href="#"
+      class="inline-flex items-center gap-2 border border-(--border) hover:border-(--text-2) px-5 py-2.5 text-[10px] font-mono tracking-widest uppercase text-(--text-2) hover:text-(--text) transition-all"
+    >
+      Download CV
+    </a>
+  </div>
+</Layout>
+
+<script>
+  import gsap from "gsap";
+  gsap.from("#main-content > div > *", {
+    opacity: 0,
+    y: 12,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: "power3.out",
+    delay: 0.1,
+  });
+</script>

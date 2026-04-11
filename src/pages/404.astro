@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — Not Found">
+  <div class="min-h-screen flex flex-col items-center justify-center px-8 text-center">
+    <p class="font-display text-[120px] md:text-[180px] font-light leading-none text-[var(--bg-3)] select-none" id="err-num">404</p>
+    <h1 class="font-display text-3xl font-light text-[var(--text)] -mt-6 mb-4 opacity-0" id="err-title">Frame not found</h1>
+    <p class="text-sm text-[var(--text-3)] mb-8 opacity-0" id="err-sub">This photograph doesn't exist — or hasn't been developed yet.</p>
+    <a href="/" class="opacity-0 font-mono text-xs tracking-widest uppercase text-[var(--accent)] hover:text-[var(--text)] transition-colors border-b border-[var(--accent)] pb-px" id="err-link">
+      Return home →
+    </a>
+  </div>
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out', delay: 0.1 } });
+  tl.to('#err-num',   { opacity: 0.15, duration: 0 })
+    .to('#err-title', { opacity: 1, y: 0, duration: 0.6 })
+    .to('#err-sub',   { opacity: 1, duration: 0.5 }, '-=0.3')
+    .to('#err-link',  { opacity: 1, duration: 0.5 }, '-=0.2');
+</script>
