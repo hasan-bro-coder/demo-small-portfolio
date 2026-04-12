@@ -50,7 +50,7 @@ console.log(entry);
 
   const open  = (i: number) => {
     cur = i;
-    img.src = items[i].dataset.src + '&auto=format&q=90&w=1800';
+    img.src = items[i].dataset.src || "";
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   };

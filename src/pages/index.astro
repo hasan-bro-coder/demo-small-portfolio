@@ -2,8 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 const entries = await getCollection('gallery');
+
+
 ---
-<Layout title="Alex Mercer">
+<Layout title="Alex Mercer" >
   <div class="p-8 md:p-12">
     <header class="mb-14">
       <h1 class="text-5xl md:text-6xl font-medium text-(--text) leading-tight">
