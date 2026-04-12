@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Contact — Alex Mercer" cls="justify-center items-center flex">
   <div class="p-8 md:p-12 max-w-md">
 
-    <h1 class="font-display text-4xl font-light text-(--text) mb-2">Contact</h1>
+    <h1 class="font-display text-4xl font-medium text-(--text) mb-2">Contact</h1>
     <p class="text-sm text-(--text-2) mb-10">For commissions, collaborations, or print inquiries.</p>
 
     <form id="form" class="space-y-6" novalidate>
@@ -13,25 +13,25 @@ import Layout from '../layouts/Layout.astro';
         { id: 'email',   label: 'Email',   type: 'email' as const, placeholder: 'your@email.com' },
       ].map(f => (
         <div>
-          <label class="block font-mono text-[10px] tracking-[0.2em] uppercase text-(--text-3) mb-1.5" for={f.id}>{f.label}</label>
+          <label class="block text-[10px] tracking-[0.2em] uppercase text-(--text-3) mb-1.5" for={f.id}>{f.label}</label>
           <input id={f.id} name={f.id} type={f.type} placeholder={f.placeholder} required
             class="w-full bg-transparent border-b border-(--border) focus:border-(--text-2) py-2 text-sm text-(--text) placeholder-(--text-3) outline-none transition-colors" />
         </div>
       ))}
 
       <div>
-        <label class="block font-mono text-[10px] tracking-[0.2em] uppercase text-(--text-3) mb-1.5" for="message">Message</label>
+        <label class="block text-[10px] tracking-[0.2em] uppercase text-(--text-3) mb-1.5" for="message">Message</label>
         <textarea id="message" name="message" rows="4" placeholder="Tell me about your project…" required
           class="w-full bg-transparent border-b border-(--border) focus:border-(--text-2) py-2 text-sm text-(--text) placeholder-(--text-3) outline-none transition-colors resize-none leading-relaxed"></textarea>
       </div>
 
       <button type="submit" id="submit"
-        class="border border-(--border) hover:border-(--text-2) px-6 py-2.5 text-[10px] font-mono tracking-widest uppercase text-(--text-2) hover:text-(--text) transition-all">
+        class="border border-(--border) hover:border-(--text-2) px-6 py-2.5 text-[10px] tracking-widest uppercase text-(--text-2) hover:text-(--text) transition-all">
         Send
       </button>
     </form>
 
-    <p id="done" class="hidden text-sm text-(--text-2) mt-6 font-mono">Message sent — I'll be in touch soon.</p>
+    <p id="done" class="hidden text-sm text-(--text-2) mt-6">Message sent — I'll be in touch soon.</p>
 
   </div>
 </Layout>
