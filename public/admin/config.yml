@@ -1,10 +1,10 @@
-local_backend: true
+# local_backend: true
 backend:
   name: git-gateway
   branch: main
 
-# media_folder: "public/images"
-# public_folder: "/images" 
+media_folder: "/images/small-photographer-portfolio"
+public_folder: "/images/small-photographer-portfolio" 
 folder: "src/content/gallery"
 
 allow_multiple: true
@@ -14,7 +14,10 @@ media_library:
     multiple: "true"
     cloud_name: ddsddw7ua
     api_key: 813753631294118
-    # default_transformations:
+    upload_preset: "small-photographer-portfolio"
+    default_transformations:
+    - - fetch_format: auto
+        quality: auto
         # - - effect: grayscale
 
 
