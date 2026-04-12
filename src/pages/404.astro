@@ -1,8 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data.ts';
 ---
 
-<Layout title="404 — Not Found">
+<Layout
+  title={`404 — Not Found | ${siteConfig.name}`}
+  description="Page not found. This photograph doesn't exist — or hasn't been developed yet."
+>
   <div class="min-h-screen flex flex-col items-center justify-center px-8 text-center">
     <p class="text-[120px] md:text-[180px] font-medium leading-none text-(--bg-3) select-none" id="err-num">404</p>
     <h1 class="text-3xl font-medium text-(--text) mt-4 mb-4 opacity-0" id="err-title">Frame not found</h1>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { siteConfig } from '../../data.ts';
 
 export async function getStaticPaths() {
   const entries = await getCollection('gallery');
@@ -10,11 +11,19 @@ export async function getStaticPaths() {
   }));
 }
 const { entry } = Astro.props;
-const { title, detail } = entry.data;
+const { title, detail, alt, date } = entry.data;
 const images = Array.isArray(entry.data.images) ? entry.data.images : [entry.data.images];
-console.log(entry);
+const coverImage = images[0];
+const description = detail || `${title} photography by ${siteConfig.author.name}`;
 ---
-<Layout title={`${title} — Alex Mercer`}>
+<Layout
+  title={`${title} — ${siteConfig.name}`}
+  description={description}
+  image={coverImage}
+  type="article"
+  publishedTime={date?.toISOString()}
+  modifiedTime={date?.toISOString()}
+>
   <div class="p-8 md:p-12">
     <header class="mb-8 border-b border-(--border) pb-6">
       <h1 class="font-display text-4xl md:text-5xl font-medium text-(--text)">{title}</h1>

@@ -1,10 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { siteConfig } from '../../data.ts';
 const entries = await getCollection('gallery');
-console.log(entries);
 ---
-<Layout title="Gallery — Alex Mercer">
+<Layout
+  title={`Gallery — ${siteConfig.name}`}
+  description={`Photography gallery by ${siteConfig.author.name}. Explore ${entries.length} collections of portraiture, landscape, and architectural photography.`}
+>
   <div class="p-8 md:p-12">
     <h1 class="font-display text-4xl font-medium text-(--text) mb-10">Gallery</h1>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">

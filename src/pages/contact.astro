@@ -1,8 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { siteConfig } from "../data.ts";
 ---
 
-<Layout title="Contact — Alex Mercer" cls="justify-center items-center flex">
+<Layout
+  title={`Contact — ${siteConfig.name}`}
+  description={`Get in touch with ${siteConfig.author.name} for commissions, collaborations, or print inquiries. ${siteConfig.contact.location}.`}
+>
   <!-- <form action="https://api.web3forms.com/submit" method="POST">
     <input
       type="hidden"

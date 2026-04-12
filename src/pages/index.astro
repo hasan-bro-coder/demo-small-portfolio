@@ -2,10 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 const entries = await getCollection('gallery');
-
-
 ---
-<Layout title="Alex Mercer" >
+<Layout>
   <div class="p-8 md:p-12">
     <header class="mb-14">
       <h1 class="text-5xl md:text-6xl font-medium text-(--text) leading-tight">
@@ -22,7 +20,7 @@ const entries = await getCollection('gallery');
         const cover = e.data.images[0];
         return (
           <a href={`/gallery/${slug}`} class="group relative overflow-hidden aspect-3/4 block">
-            <img src={cover} alt={e.data.title}
+            <img src={cover} alt={e.data.alt || e.data.title}
               class="w-full h-full object-cover duration-700 group-hover:scale-105 hover:grayscale-0 transition-all grayscale" />
             <div class="absolute inset-x-0 bottom-0 p-4 bg-linear-to-t from-black/60 to-transparent">
               <p class="text-lg font-medium text-white">{e.data.title}</p>

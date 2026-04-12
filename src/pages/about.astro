@@ -1,14 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { siteConfig } from "../data.ts";
 ---
 
-<Layout title="About — Alex Mercer" cls="justify-center items-center flex">
+<Layout
+  title={`About — ${siteConfig.name}`}
+  description={`${siteConfig.author.bio} ${siteConfig.author.profession} based in ${siteConfig.author.location}.`}
+  image="/pfp.webp"
+>
   <div
     class="p-8 md:p-12 max-w-lg flex justify-center items-center flex-col w-full h-full"
   >
     <div class="mb-8 w-40 h-52 overflow-hidden grayscale">
       <img
-        src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&q=85&auto=format"
+        src="/pfp.webp"
         alt="Alex Mercer"
         class="w-full h-full object-cover"
       />
