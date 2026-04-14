@@ -1,8 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-const entries = await getCollection('gallery');
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+const entries = await getCollection("gallery");
+import { Image } from "astro:assets";
+// import pfp from '../../public/pfp.jpg';
 ---
+
 <Layout>
   <div class="p-8 md:p-12">
     <header class="mb-14">
@@ -15,26 +18,63 @@ const entries = await getCollection('gallery');
     </header>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-      {entries.map(e => {
-        const slug  = e.id.replace(/\.json$/, '');
-        const cover = e.data.images[0];
-        return (
-          <a href={`/gallery/${slug}`} class="group relative overflow-hidden aspect-3/4 block">
-            <img src={cover} alt={e.data.alt || e.data.title}
-              class="w-full h-full object-cover duration-700 group-hover:scale-105 hover:grayscale-0 transition-all grayscale" />
-            <div class="absolute inset-x-0 bottom-0 p-4 bg-linear-to-t from-black/60 to-transparent">
-              <p class="text-lg font-medium text-white">{e.data.title}</p>
-            </div>
-          </a>
-        );
-      })}
+      {
+        entries.map((e) => {
+          const slug = e.id.replace(/\.json$/, "");
+          const cover = e.data.images[0];
+          return (
+            <a
+              href={`/gallery/${slug}`}
+              class="group relative overflow-hidden aspect-3/4 block"
+            >
+              <Image
+                src={cover}
+                alt={e.data.alt || e.data.title}
+                width={400}
+                height={500}
+                class="w-full h-full object-cover duration-700 group-hover:scale-105 hover:grayscale-0 transition-all grayscale"
+              />
+              <div class="absolute inset-x-0 bottom-0 p-4 bg-linear-to-t from-black/60 to-transparent">
+                <p class="text-lg font-medium text-white">{e.data.title}</p>
+              </div>
+            </a>
+          );
+        })
+      }
     </div>
   </div>
 </Layout>
 
 <script>
-  import gsap from 'gsap';
-  gsap.from('h1', { opacity: 0, y: 16, duration: 0.8, ease: 'power3.out', delay: 0.1 });
-  gsap.from('header p', { opacity: 0, y: 8, duration: 0.6, ease: 'power3.out', delay: 0.3 });
-  gsap.from('.grid a', { opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power2.out', delay: 0.4 });
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+  const lenis = new Lenis();
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+  });
+  gsap.ticker.lagSmoothing(0);
+  gsap.from("h1", {
+    opacity: 0,
+    y: 16,
+    duration: 0.8,
+    ease: "power3.out",
+    delay: 0.1,
+  });
+  gsap.from("header p", {
+    opacity: 0,
+    y: 8,
+    duration: 0.6,
+    ease: "power3.out",
+    delay: 0.3,
+  });
+  gsap.from(".grid a", {
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.08,
+    ease: "power2.out",
+    delay: 0.4,
+  });
 </script>

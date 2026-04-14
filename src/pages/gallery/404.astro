@@ -1,5 +1,36 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { siteConfig } from '../../data.ts';
+---
+
+<Layout
+  title={`404 — Not Found | ${siteConfig.name}`}
+  description="Page not found. This photograph doesn't exist — or hasn't been developed yet."
+>
+  <div class="min-h-screen flex flex-col items-center justify-center px-8 text-center">
+    <p class="text-[120px] md:text-[180px] font-medium leading-none text-(--bg-3) select-none" id="err-num">404</p>
+    <h1 class="text-3xl font-medium text-(--text) mt-4 mb-4 opacity-0" id="err-title">Frame not found</h1>
+    <p class="text-sm text-(--text-3) mb-8 opacity-0" id="err-sub">This photograph doesn't exist — or hasn't been developed yet.</p>
+    <a href="/" class="opacity-0 text-xs tracking-widest uppercase text-(--accent) hover:text-(--text) transition-colors border-b border-(--accent) pb-px" id="err-link">
+      Return home →
+    </a>
+  </div>
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out', delay: 0.1 } });
+  tl.to('#err-num',   { opacity: 0.15, duration: 0 })
+    .to('#err-title', { opacity: 1, y: 0, duration: 0.6 })
+    .to('#err-sub',   { opacity: 1, duration: 0.5 }, '-=0.3')
+    .to('#err-link',  { opacity: 1, duration: 0.5 }, '-=0.2');
+</script>
+
+
+
+
+<!-- ---
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { siteConfig } from '../../data.ts';
 const entries = await getCollection('gallery');
@@ -26,4 +57,4 @@ const entries = await getCollection('gallery');
       })}
     </div>
   </div>
-</Layout>
+</Layout> -->
