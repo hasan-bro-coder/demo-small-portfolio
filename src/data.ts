@@ -2,7 +2,9 @@ export const siteConfig = {
   name: "Alex Mercer",
   title: "Alex Mercer - Photographer",
   description: "Photography portfolio of Alex Mercer. Specializing in portraiture, landscape, architecture, and the spaces between them. Based in New York.",
-  url: import.meta.env.BASE_URL || "https://alexmercer.photo", // Replace with actual domain
+  url: 
+  // import.meta.env.BASE_URL || 
+  "https://https://small-photography-portfolio-demo.netlify.app", // Replace with actual domain
   ogImage: "/pfp.webp", // Add this image to public folder
   twitterHandle: "@alexmercer", // Replace with actual handle
   keywords: ["photographer", "photography", "portfolio", "New York", "portrait", "landscape", "architecture"],
